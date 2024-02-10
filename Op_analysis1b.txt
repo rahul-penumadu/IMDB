@@ -1,0 +1,113 @@
+SQL> 
+SQL> column column_name format a40
+SQL> set linesize 200
+SQL> set lines 150
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Audrey Hepburn in each decade across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> select 'Audrey Hepburn',col,sum(count) from (select startyear,count(startyear) as count,
+  2  case when startyear>='1951' and startyear<='1960' then '1950s'
+  3  when startyear>='1961' and startyear<='1970' then '1960s'
+  4  when startyear>='1971' and startyear<='1980' then '1970s'
+  5  when startyear>='1981' and startyear<='1990' then '1980s'
+  6  when startyear>='1991' and startyear<='2000' then '1990s'
+  7  when startyear>='2001' and startyear<='2010' then '2000s'
+  8  when startyear>='2011' and startyear<='2020' then '2010s'
+  9  when startyear>='2021' and startyear<='2030' then '2020s'
+ 10  end as col
+ 11  from imdb00.title_basics where lower(titletype)='movie' and tconst in (select tconst from imdb00.title_principals where nconst='nm0000030' and lower(category)='actress')
+ 12  and startyear NOT LIKE '\N' group by startyear) group by col order by col;
+
+'AUDREYHEPBURN COL   SUM(COUNT)
+-------------- ----- ----------
+Audrey Hepburn 1950s         10
+Audrey Hepburn 1960s          8
+Audrey Hepburn 1970s          2
+Audrey Hepburn 1980s          1
+
+SQL> 
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Harrison Ford in each decade across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> 
+SQL> select 'Harrison Ford',col,sum(count) from (select startyear,count(startyear) as count,
+  2  case when startyear>='1951' and startyear<='1960' then '1950s'
+  3  when startyear>='1961' and startyear<='1970' then '1960s'
+  4  when startyear>='1971' and startyear<='1980' then '1970s'
+  5  when startyear>='1981' and startyear<='1990' then '1980s'
+  6  when startyear>='1991' and startyear<='2000' then '1990s'
+  7  when startyear>='2001' and startyear<='2010' then '2000s'
+  8  when startyear>='2011' and startyear<='2020' then '2010s'
+  9  when startyear>='2021' and startyear<='2030' then '2020s'
+ 10  end as col
+ 11  from imdb00.title_basics where lower(titletype)='movie' and tconst in (select tconst from imdb00.title_principals where nconst='nm0000148' and lower(category)='actor')
+ 12  and startyear NOT LIKE '\N' group by startyear order by 1) group by col order by col;
+
+'HARRISONFORD COL   SUM(COUNT)
+------------- ----- ----------
+Harrison Ford 1970s          6
+Harrison Ford 1980s          9
+Harrison Ford 1990s         11
+Harrison Ford 2000s          8
+Harrison Ford 2010s         11
+Harrison Ford 2020s          1
+
+6 rows selected. 
+
+SQL> 
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Jayalalitha in each decade across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> select 'JayaLalitha', col,sum(count) from (select startyear,count(startyear) as count,
+  2  case when startyear>='1951' and startyear<='1960' then '1950s'
+  3  when startyear>='1961' and startyear<='1970' then '1960s'
+  4  when startyear>='1971' and startyear<='1980' then '1970s'
+  5  when startyear>='1981' and startyear<='1990' then '1980s'
+  6  when startyear>='1991' and startyear<='2000' then '1990s'
+  7  when startyear>='2001' and startyear<='2010' then '2000s'
+  8  when startyear>='2011' and startyear<='2020' then '2010s'
+  9  when startyear>='2021' and startyear<='2030' then '2020s'
+ 10  end as col
+ 11  from imdb00.title_basics where lower(titletype)='movie' and tconst in (select tconst from imdb00.title_principals where nconst='nm0412883' and lower(category)='actress')
+ 12  and startyear NOT LIKE '\N' group by startyear order by 1) group by col order by col;
+
+'JAYALALITH COL   SUM(COUNT)
+----------- ----- ----------
+JayaLalitha 1960s         75
+JayaLalitha 1970s         50
+
+SQL> 
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Mohan Babu in each decade across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> select 'Mohan Babu',col,sum(count) from (select startyear,count(startyear) as count,
+  2  case when startyear>='1951' and startyear<='1960' then '1950s'
+  3  when startyear>='1961' and startyear<='1970' then '1960s'
+  4  when startyear>='1971' and startyear<='1980' then '1970s'
+  5  when startyear>='1981' and startyear<='1990' then '1980s'
+  6  when startyear>='1991' and startyear<='2000' then '1990s'
+  7  when startyear>='2001' and startyear<='2010' then '2000s'
+  8  when startyear>='2011' and startyear<='2020' then '2010s'
+  9  when startyear>='2021' and startyear<='2030' then '2020s'
+ 10  end as col
+ 11  from imdb00.title_basics where lower(titletype)='movie' and tconst in (select tconst from imdb00.title_principals where nconst='nm0595934' and lower(category)='actor')
+ 12  and startyear NOT LIKE '\N' group by startyear order by 1) group by col order by col;
+
+'MOHANBABU COL   SUM(COUNT)
+---------- ----- ----------
+Mohan Babu 1970s         69
+Mohan Babu 1980s         91
+Mohan Babu 1990s         38
+Mohan Babu 2000s         19
+Mohan Babu 2010s          8
+Mohan Babu 2020s          1
+
+6 rows selected. 
+
+SQL> 
+SQL> 
+SQL> Set echo off

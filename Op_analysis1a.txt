@@ -1,0 +1,268 @@
+SQL> 
+SQL> column column_name format a40
+SQL> set linesize 200
+SQL> set lines 150
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Audrey Hepburn in each year across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> SELECT
+  2      'Audrey Hepburn',
+  3      startyear,
+  4      COUNT(startyear) AS year
+  5  FROM
+  6      imdb00.title_basics
+  7  WHERE
+  8          lower(titletype) = 'movie'
+  9      AND tconst IN (
+ 10          SELECT
+ 11              tconst
+ 12          FROM
+ 13              imdb00.title_principals
+ 14          WHERE
+ 15                  nconst = 'nm0000030'
+ 16              AND lower(category) = 'actress'
+ 17      )
+ 18      AND startyear NOT LIKE '\N'
+ 19  GROUP BY
+ 20      startyear
+ 21  ORDER BY
+ 22      2;
+
+'AUDREYHEPBURN STARTYEAR        YEAR
+-------------- ---------- ----------
+Audrey Hepburn 1952                1
+Audrey Hepburn 1953                2
+Audrey Hepburn 1954                1
+Audrey Hepburn 1956                1
+Audrey Hepburn 1957                2
+Audrey Hepburn 1959                2
+Audrey Hepburn 1960                1
+Audrey Hepburn 1961                2
+Audrey Hepburn 1963                1
+Audrey Hepburn 1964                2
+Audrey Hepburn 1966                1
+
+'AUDREYHEPBURN STARTYEAR        YEAR
+-------------- ---------- ----------
+Audrey Hepburn 1967                2
+Audrey Hepburn 1976                1
+Audrey Hepburn 1979                1
+Audrey Hepburn 1981                1
+
+15 rows selected. 
+
+SQL> 
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Harrison Ford in each year across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> SELECT
+  2      'Harrison Ford',
+  3      startyear,
+  4      COUNT(startyear) AS year
+  5  FROM
+  6      imdb00.title_basics
+  7  WHERE
+  8          lower(titletype) = 'movie'
+  9      AND tconst IN (
+ 10          SELECT
+ 11              tconst
+ 12          FROM
+ 13              imdb00.title_principals
+ 14          WHERE
+ 15                  nconst = 'nm0000148'
+ 16              AND lower(category) = 'actor'
+ 17      )
+ 18      AND startyear NOT LIKE '\N'
+ 19  GROUP BY
+ 20      startyear
+ 21  ORDER BY
+ 22      2;
+
+'HARRISONFORD STARTYEAR        YEAR
+------------- ---------- ----------
+Harrison Ford 1977                2
+Harrison Ford 1978                1
+Harrison Ford 1979                2
+Harrison Ford 1980                1
+Harrison Ford 1981                1
+Harrison Ford 1982                1
+Harrison Ford 1983                1
+Harrison Ford 1984                1
+Harrison Ford 1986                1
+Harrison Ford 1988                2
+Harrison Ford 1989                1
+
+'HARRISONFORD STARTYEAR        YEAR
+------------- ---------- ----------
+Harrison Ford 1990                1
+Harrison Ford 1991                1
+Harrison Ford 1992                1
+Harrison Ford 1993                1
+Harrison Ford 1994                1
+Harrison Ford 1995                1
+Harrison Ford 1997                2
+Harrison Ford 1998                1
+Harrison Ford 1999                2
+Harrison Ford 2000                1
+Harrison Ford 2002                1
+
+'HARRISONFORD STARTYEAR        YEAR
+------------- ---------- ----------
+Harrison Ford 2003                1
+Harrison Ford 2006                1
+Harrison Ford 2007                1
+Harrison Ford 2008                1
+Harrison Ford 2009                1
+Harrison Ford 2010                2
+Harrison Ford 2011                1
+Harrison Ford 2013                3
+Harrison Ford 2014                1
+Harrison Ford 2015                2
+Harrison Ford 2017                1
+
+'HARRISONFORD STARTYEAR        YEAR
+------------- ---------- ----------
+Harrison Ford 2019                2
+Harrison Ford 2020                1
+Harrison Ford 2023                1
+
+36 rows selected. 
+
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Jayalalitha in each year across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> SELECT
+  2      'JayaLalitha',
+  3      startyear,
+  4      COUNT(startyear) AS year
+  5  FROM
+  6      imdb00.title_basics
+  7  WHERE
+  8          lower(titletype) = 'movie'
+  9      AND tconst IN (
+ 10          SELECT
+ 11              tconst
+ 12          FROM
+ 13              imdb00.title_principals
+ 14          WHERE
+ 15                  nconst = 'nm0412883'
+ 16              AND lower(category) = 'actress'
+ 17      )
+ 18      AND startyear NOT LIKE '\N'
+ 19  GROUP BY
+ 20      startyear
+ 21  ORDER BY
+ 22      2;
+
+'JAYALALITH STARTYEAR        YEAR
+----------- ---------- ----------
+JayaLalitha 1961                1
+JayaLalitha 1962                1
+JayaLalitha 1963                1
+JayaLalitha 1965                6
+JayaLalitha 1966               16
+JayaLalitha 1967               10
+JayaLalitha 1968               23
+JayaLalitha 1969                9
+JayaLalitha 1970                8
+JayaLalitha 1971               10
+JayaLalitha 1972                8
+
+'JAYALALITH STARTYEAR        YEAR
+----------- ---------- ----------
+JayaLalitha 1973                7
+JayaLalitha 1974                7
+JayaLalitha 1975                6
+JayaLalitha 1976                5
+JayaLalitha 1977                3
+JayaLalitha 1980                4
+
+17 rows selected. 
+
+SQL> 
+SQL> ---------------------------------------------------------------------------------------
+SQL> -- query: Total number of movies made by Mohan Babu in each year across their career span
+SQL> ---------------------------------------------------------------------------------------
+SQL> SELECT
+  2      'Mohan Babu',
+  3      startyear,
+  4      COUNT(startyear) AS year
+  5  FROM
+  6      imdb00.title_basics
+  7  WHERE
+  8          lower(titletype) = 'movie'
+  9      AND tconst IN (
+ 10          SELECT
+ 11              tconst
+ 12          FROM
+ 13              imdb00.title_principals
+ 14          WHERE
+ 15                  nconst = 'nm0595934'
+ 16              AND lower(category) = 'actor'
+ 17      )
+ 18      AND startyear NOT LIKE '\N'
+ 19  GROUP BY
+ 20      startyear
+ 21  ORDER BY
+ 22      2;
+
+'MOHANBABU STARTYEAR        YEAR
+---------- ---------- ----------
+Mohan Babu 1974                1
+Mohan Babu 1975                1
+Mohan Babu 1976                3
+Mohan Babu 1977                8
+Mohan Babu 1978               17
+Mohan Babu 1979               13
+Mohan Babu 1980               26
+Mohan Babu 1981               10
+Mohan Babu 1982               11
+Mohan Babu 1983               10
+Mohan Babu 1984                9
+
+'MOHANBABU STARTYEAR        YEAR
+---------- ---------- ----------
+Mohan Babu 1985               11
+Mohan Babu 1986                6
+Mohan Babu 1987                7
+Mohan Babu 1988               12
+Mohan Babu 1989               10
+Mohan Babu 1990                5
+Mohan Babu 1991                8
+Mohan Babu 1992                6
+Mohan Babu 1993                5
+Mohan Babu 1994                3
+Mohan Babu 1995                1
+
+'MOHANBABU STARTYEAR        YEAR
+---------- ---------- ----------
+Mohan Babu 1996                4
+Mohan Babu 1997                5
+Mohan Babu 1998                2
+Mohan Babu 1999                3
+Mohan Babu 2000                1
+Mohan Babu 2001                2
+Mohan Babu 2002                2
+Mohan Babu 2004                3
+Mohan Babu 2005                4
+Mohan Babu 2006                1
+Mohan Babu 2007                1
+
+'MOHANBABU STARTYEAR        YEAR
+---------- ---------- ----------
+Mohan Babu 2008                2
+Mohan Babu 2009                3
+Mohan Babu 2010                1
+Mohan Babu 2013                1
+Mohan Babu 2014                3
+Mohan Babu 2015                3
+Mohan Babu 2018                1
+Mohan Babu 2022                1
+
+41 rows selected. 
+
+SQL> 
+SQL> Set echo off
